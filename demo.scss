@@ -1,0 +1,28 @@
+.awesome{
+ font-size: 30px;
+ background-color: rgb(58, 111, 156);
+ font-weight: bold;
+ margin: 20px;
+ padding: 20px;
+}
+
+@mixin common-code($size,$background-color){
+    margin: 20px;
+    padding: 20px;
+    font-size: $size;
+    background-color:$background-color
+    ;
+    border: 2px solid rgb(71, 61, 61);
+
+}
+div{
+    @include common-code(30px,rgb(97, 97, 51));
+}
+
+h1{
+    @include common-code(20px,rgb(69, 62, 129));
+}
+
+p{
+    @extend .awesome;
+}
