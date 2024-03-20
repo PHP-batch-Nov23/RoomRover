@@ -19,7 +19,8 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private authService: ServicesService,
-    private router: Router
+    private router: Router,
+    
   ) { }
 
   get email() {
@@ -71,5 +72,8 @@ export class LoginComponent {
   redirectToRegister() {
     this.router.navigate(['/register']);
   }
+
+  //laravel part
+  
 
   }

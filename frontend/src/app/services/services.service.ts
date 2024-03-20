@@ -33,4 +33,7 @@ export class ServicesService {
   getBookings(): Observable<any> {
     return this.http.get<any>('http://localhost:3000'); // Adjust the URL as needed
   }
+
+  //connection with laravel rest api
+ 
 }
