@@ -23,10 +23,11 @@ return new class extends Migration
             $table->date('end_date');
             $table->integer('rooms_book');
             $table->timestamps(); // This will create created_at and updated_at columns
+            $table->softDeletes();   // For softDelete data from table
 
             // Define foreign key constraints
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('hotel_id')->references('id')->on('hotels')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('hotel_id')->references('id')->on('hotels')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

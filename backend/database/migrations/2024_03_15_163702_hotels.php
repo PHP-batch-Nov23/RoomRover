@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('address');
             $table->integer('rooms');
             $table->timestamps(); // This will create created_at and updated_at columns
+            $table->softDeletes();   // For softDelete data from table
         });
     }
 

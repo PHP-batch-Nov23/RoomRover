@@ -1,77 +1,35 @@
-<!-- <form (ngSubmit)="search()">
-  <input type="text" [(ngModel)]="city" name="city" placeholder="City">
-  <input type="text" [(ngModel)]="area" name="area" placeholder="Area">
-  <input type="text" [(ngModel)]="hotelName" name="hotelName" placeholder="Hotel Name">
-  <button type="submit">Search</button>
-</form>
-
-<ul *ngIf="searchResults.length">
-  <li *ngFor="let hotel of searchResults">
-    <h3>{{ hotel.name }}</h3>
-    <p>City: {{ hotel.city }}</p>
-    <p>Area: {{ hotel.area }}</p>
-  </li>
-</ul> -->
-
-
-<!-- search.component.html -->
-<!-- <link href="search.component.css"> -->
-<br>
-<br>
-<br>
-<!-- <div class="container">
-  <div class="input-container">
-    <label>Search: <input type="text" [(ngModel)]="searchText" (input)="search()"></label>
-  </div>
-
-  <div *ngFor="let hotel of filteredHotels">
-    <img [src]="hotel.imageUrl" alt="Hotel Image">
-    <h3>{{ hotel.name }}</h3>
-    <p>City: {{ hotel.city }}</p>
-    <p>Area: {{ hotel.area }}</p>
-    <button class="btn-book" (click)="toggleBookingForm(hotel)">Book</button>
-      <p class="price">{{ hotel.price }}</p>
-      <div *ngIf="hotel.showBookingForm" class="booking-form">
-         Booking form fields here 
-        <input type="text" placeholder="Name">
-        <input type="text" placeholder="Email">
-       
-        <button (click)="confirmBooking(hotel)">Confirm Booking</button>
-  </div>
-</div> -->
+<app-navbar></app-navbar>
 
 <div class="container">
   <div class="input-container">
-    <label>Search: <input type="text" [(ngModel)]="searchText" (input)="search()"></label>
-  </div>
+    <label>Search <br><br> <input type="text" [(ngModel)]="searchText" (input)="search()"></label>
+  </div><br>
 
-  <div class="card-container">
-    <div class="hotel-card" *ngFor="let hotel of filteredHotels">
-      <img [src]="'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7X0QNtEVS7I3lVqaQBSs2uRMlgHcZknBIFco9Sj2IZyTAP3Hd9p92mGPFhKROD6md5yA&usqp=CAU'" alt="Hotel Image">
-      <div class="card-details">
-        <h3>{{ hotel.name }}</h3>
-        <p>City: {{ hotel.city }}</p>
-        <p>Area: {{ hotel.area }}</p>
-        <div class="ratings">
-          <span class="rating">{{ hotel.rating }}</span>
-          <span class="stars">
-            <ng-container *ngFor="let star of getStarArray(hotel.rating)">
-              <i class="fas fa-star"></i>
-            </ng-container>
-          </span>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <div class="col" *ngFor="let hotel of filteredHotels">
+      <div class="card">
+        <img [src]="'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7X0QNtEVS7I3lVqaQBSs2uRMlgHcZknBIFco9Sj2IZyTAP3Hd9p92mGPFhKROD6md5yA&usqp=CAU'" alt="Hotel Image" class="card-img-top" style="height: 250px;">
+        <div class="card-body">
+          <h5 class="card-title">{{ hotel.name }}</h5>
+          <p class="card-text">City: {{ hotel.city }}</p>
+          <p class="card-text">Area: {{ hotel.address }}</p>
+          <p class="card-text">Available Rooms: {{ hotel.rooms }}</p>
+          <div class="ratings">
+            <span class="rating">{{ hotel.rating }}</span>
+            <span class="stars">
+              <ng-container *ngFor="let star of getStarArray(hotel.rating)">
+                <span class="bi bi-star-fill text-warning"></span>
+
+              </ng-container>
+            </span>
+          </div>
+          <p class="card-text">Price: {{ hotel.price }}</p>
         </div>
-        <a href="#"><button class="btn-book" (click)="toggleBookingForm(hotel)">Book</button></a>
-        <p class="price">{{ hotel.price }}</p>
-        <!-- <div *ngIf="hotel.showBookingForm" class="booking-form">
-          <input type="text" placeholder="Name">
-          <input type="text" placeholder="Email">
-          <button (click)="confirmBooking(hotel)">Confirm Booking</button>
-        </div> -->
+        <div class="card-footer">
+          <a [href]="'/booking-form/' + hotel.id" class="btn">Book Now</a>
+        </div>
+        </div>
       </div>
-      
     </div>
   </div>
-</div>
-
-
 

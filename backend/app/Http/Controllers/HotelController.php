@@ -4,28 +4,29 @@ namespace App\Http\Controllers;
 
 use App\Models\Hotel;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class HotelController extends Controller
 {
     public function hotellist()
     {
-        $hotels = Hotel::orderBy('id', 'desc')->paginate();
-        // $hotels = Hotel::orderBy('id','desc')->paginate(10);
-        return view('admin.hotelview', compact('hotels'));
+        $hotels = Hotel::orderBy('id','desc')->paginate(8);
+        return view('admin.hotels', compact('hotels'));
     }
 
     public function create()
     {
-        return view('admin.addhotel');
+        return view('admin.newhotel');
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'city' => 'required|string|max:255',
-            'address' => 'required|string|max:255',
+            'name' => 'required|string|min:3|max:200',
+            'city' => 'required|string|min:3|max:200',
+            'address' => 'required|string|max:500',
             'rooms' => 'required|integer',
+            'price' => 'required|integer',
         ]);
 
         Hotel::create([
@@ -33,6 +34,7 @@ class HotelController extends Controller
             'city' => $request->city,
             'address' => $request->address,
             'rooms' => $request->rooms,
+            'price' => $request->price,
         ]);
 
         return redirect()->route('hotellist')->with('status', 'Hotel added successfully.');
@@ -44,24 +46,26 @@ class HotelController extends Controller
         return view('admin.edithotel', compact('hotel'));
     }
     public function update(Request $request, $id)
-{
-    $request->validate([
-        'name' => 'required|string|max:255',
-        'city' => 'required|string|max:255',
-        'address' => 'required|string|max:255',
-        'rooms' => 'required|integer',
-    ]);
+    {
+        $request->validate([
+            'name' => 'required|string|min:3|max:200',
+            'city' => 'required|string|min:3|max:200',
+            'address' => 'required|string|max:500',
+            'rooms' => 'required|integer',
+            'price' => 'required|integer',
+        ]);
 
-    $hotel = Hotel::findOrFail($id);
-    $hotel->update([
-        'name' => $request->name,
-        'city' => $request->city,
-        'address' => $request->address,
-        'rooms' => $request->rooms,
-    ]);
+        $hotel = Hotel::findOrFail($id);
+        $hotel->update([
+            'name' => $request->name,
+            'city' => $request->city,
+            'address' => $request->address,
+            'rooms' => $request->rooms,
+            'price' => $request->rooms,
+        ]);
 
-    return redirect()->route('hotellist')->with('status', 'Hotel updated successfully.');
-}
+        return redirect()->route('hotellist')->with('status', 'Hotel updated successfully.');
+    }
 
 
     public function destroy($id)

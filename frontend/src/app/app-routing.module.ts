@@ -6,22 +6,28 @@ import { BookHotelComponent } from './navbar/book-hotel/book-hotel.component';
 import { ContactsComponent } from './navbar/contacts/contacts.component';
 import { SearchComponent } from './navbar/search/search.component';
 import { LoginComponent } from './navbar/login/login.component';
-import { RegisterComponent } from './navbar/register/register.component';
-import { authGuard } from './guards/auth.guard';
+import { RegisterComponent } from './register/register.component';
 import { BookingFormComponent } from './booking-form/booking-form.component';
-
+import { ReviewsComponent } from './reviews/reviews.component';
+import { RatingsComponent } from './ratings/ratings.component';
+import { BookingListComponent } from './navbar/booking-list/booking-list.component';
 
 const routes: Routes = [
-  {path:'', redirectTo: 'home', pathMatch: 'full' },
-  {path: 'home', component:HomeComponent, canActivate: [authGuard]},
-{path:'about-us',component:AboutUsComponent},
-{path:'book-hotel',component:BookHotelComponent},
-{ path: 'booking-form/:hotelId', component: BookingFormComponent },
-{path: 'contacts', component: ContactsComponent},
-{path:'search',component:SearchComponent},
-{path: 'login', component: LoginComponent},
-{path: 'register', component: RegisterComponent},
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'about-us', component: AboutUsComponent },
+  { path: 'book-hotel', component: BookHotelComponent },
+  { path: 'booking-form/:hotelId', component: BookingFormComponent },
+  { path: 'contacts', component: ContactsComponent },
+  { path: 'search', component: SearchComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'booking-list', component: BookingListComponent },
+  { path: 'reviews', component: ReviewsComponent },
+  { path: 'ratings', component: RatingsComponent }
 ];
+
+// , canActivate: [authGuard] 
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

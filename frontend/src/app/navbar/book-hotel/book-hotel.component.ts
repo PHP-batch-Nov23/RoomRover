@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicesService } from '../../services/services.service';
+import { Router } from '@angular/router';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-book-hotel',
@@ -10,22 +12,36 @@ export class BookHotelComponent implements OnInit {
   hotels: any[] = [];
 
   constructor(
-    private servicesService: ServicesService
-  ) {}
+    private servicesService: ServicesService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
-    // Fetch hotels data when component initializes
     this.fetchHotels();
   }
 
   // Method to fetch hotels data from the service
   fetchHotels(): void {
+
+    // const userdata = jwtDecode(JSON.stringify(sessionStorage.getItem('token')));
+    // console.log(userdata);
+    // const token = sessionStorage.getItem('token')
+    // if (token) {
+    //   const decodedToken: any = jwtDecode(token);
+    //   const user = decodedToken.user;
+    //   const userId = user.id;
+    //   console.log(user); // User data
+    //   console.log(userId);
+    // }
+
     this.servicesService.getHotels().subscribe((data) => {
       this.hotels = data; // Assign fetched data to hotels array
       // Generate random ratings for each hotel
       this.hotels.forEach((hotel) => {
         hotel.rating = this.generateRandomRating();
-        hotel.roomsAvailable = this.generateRandomRooms();
+        this.servicesService.getNumberOfRoomsAvailable(hotel.id).subscribe(rooms => {
+          hotel.availableRooms = rooms; // Assign number of rooms available to the hotel object
+        });
         hotel.showBookingForm = false; // Initialize the flag to hide the booking form
       });
     });
@@ -36,10 +52,6 @@ export class BookHotelComponent implements OnInit {
     return Math.floor(Math.random() * (5 - 3.0 + 1)) + 3.0;
   }
 
-    // Method to generate a random number of available rooms between 5 and 20
-    generateRandomRooms(): number {
-      return Math.floor(Math.random() * (20 - 5 + 1)) + 5;
-    }
 
   getStarArray(rating: number): number[] {
     const starsCount = Math.floor(rating);
@@ -53,5 +65,14 @@ export class BookHotelComponent implements OnInit {
     // Toggle booking form visibility for the selected hotel
     hotel.showBookingForm = !hotel.showBookingForm;
   }
- 
+
+  checkUser() {
+    if (sessionStorage.getItem('isLoggedIn')) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
 }

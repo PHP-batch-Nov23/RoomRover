@@ -1,8 +1,14 @@
-<body class="background-image">
+<app-navbar></app-navbar>
+
+
+<img class="bg-img" src="../../../assets/images/form.jpg" alt="">
+
 
 <form [formGroup]="loginForm" (ngSubmit)="loginUser()" class="login-form">
   <div class="form-container">
+    
     <div class="field">
+      <img src="../../../assets/images/giphy.webp" alt="Profile Image">
       <label for="email">Email</label>
       <input
         type="text"
@@ -37,18 +43,10 @@
         <div *ngIf="password.errors?.['required']">Password is required.</div>
       </small>
     </div>
-    <!-- <p-button
-      label="SIGN IN"
-      styleClass="w-full"
-      [disabled]="loginForm.invalid"
-      type="submit"
-    ></p-button>
-    <div class="mt-2">
-      <button pButton type="button" label="Register" class="register-button" (click)="redirectToRegister()"></button> -->
       <button class="custom-button sign-in-button">SIGN IN</button>
-<button class="custom-button register-button" (click)="redirectToRegister()">REGISTER</button>
+<button class="custom-button register-button" routerLink="/register" (click)="redirectToRegister()">REGISTER</button>
 
     </div>
   <!-- </div> -->
 </form>
-</body>
+<app-footer></app-footer>

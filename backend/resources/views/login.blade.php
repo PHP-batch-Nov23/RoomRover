@@ -2,26 +2,90 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RoomRover - Login</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>RoomRover Admin Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ URL::asset('form.css') }}">
+    <style>
+        /* Dark theme */
+        body {
+
+            color: #ffffff;
+            /* Light text color */
+        }
+
+        .jumbotron {
+            margin-top: 0%;
+            background-color: #343a40;
+            /* Dark jumbotron background color */
+            color: #ffffff;
+            /* Light text color */
+        }
+
+        .form-control {
+            background-color: #343a40;
+            /* Dark form background color */
+            color: #ffffff;
+            /* Light text color */
+            border-color: #ffffff;
+            /* Light border color */
+        }
+
+        /* Light theme */
+        .jumbotron-light {
+            background-color: #f8f9fa;
+            /* Light jumbotron background color */
+            color: #212529;
+            /* Dark text color */
+        }
+
+        .form-control-light {
+            background-color: #f8f9fa;
+            /* Light form background color */
+            color: #212529;
+            /* Dark text color */
+            border-color: #212529;
+            /* Dark border color */
+        }
+
+        /* Hover effect */
+        .form-control:hover {
+            background-color: #495057;
+            /* Darker background color on hover */
+            color: #ffffff;
+            /* Light text color on hover */
+        }
+
+        .form-control-light:hover {
+            background-color: #e9ecef;
+            /* Lighter background color on hover */
+            color: #212529;
+            /* Dark text color on hover */
+        }
+
+        .container {
+            text-align: justify;
+            padding-right: 40px;
+            margin-left: 30%;
+            margin-left: 30%;
+        }
+
+        .jumbotron .container {
+            max-width: 75%;
+        }
+    </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-dark bg-success">
-        <div class="container d-flex justify-content-center">
-            <span class="navbar-brand mb-0 h1">RoomRover</span>
-        </div>
-    </nav>
 
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="jumbotron">
-                    <h1 class="display-4 text-center">Admin Login</h1>
-                    <!-- Display login errors if any -->
+<div class="jumbotron text-center">
+        <h1>Admin Login</h1>
+        <p>Welcome to RoomRover Hotel Booking Application</p>
+        <div class="container ">
+            <div class="">
+                <div class="col-md-6">
+
                     @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -31,26 +95,52 @@
                         </ul>
                     </div>
                     @endif
-                    <!-- End of login error display -->
-                    <form action="/login" method="POST">
-                        @csrf <!-- Laravel CSRF protection -->
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email:</label>
-                            <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
+
+                    <form action="/login" method="POST" id="login-form" class="login-form" autocomplete="off" role="main">
+                        @csrf
+                        <h1 class="a11y-hidden">Login Form</h1>
+                        <div>
+                            <label class="label-email">
+                                <input type="email" class="text" name="email" placeholder="Email" id="email" tabindex="1" required />
+                                <span class="required">Email</span>
+                            </label>
                         </div>
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Password:</label>
-                            <input type="password" id="password" name="password" class="form-control" placeholder="Enter your password" required>
+                        <input type="checkbox" name="show-password" class="show-password a11y-hidden" id="show-password" tabindex="3" />
+                        <label class="label-show-password" for="show-password">
+                            <span>Show Password</span>
+                        </label>
+                        <div>
+                            <label class="label-password">
+                                <input type="text" class="text" name="password" placeholder="Password" id="password" tabindex="2" required />
+                                <span class="required">Password</span>
+                            </label>
                         </div>
-                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                        <input type="submit" value="Log In" />
+                        <div class="email">
+                            <a href="#">Forgot password?</a>
+                        </div>
+                        <figure aria-hidden="true">
+                            <div class="person-body"></div>
+                            <div class="neck skin"></div>
+                            <div class="head skin">
+                                <div class="eyes"></div>
+                                <div class="mouth"></div>
+                            </div>
+                            <div class="hair"></div>
+                            <div class="ears"></div>
+                            <div class="shirt-1"></div>
+                            <div class="shirt-2"></div>
+                        </figure>
                     </form>
+
+
+
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </body>
 
 </html>

@@ -9,7 +9,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -18,10 +17,14 @@ import { AboutUsComponent } from './navbar/about-us/about-us.component';
 import { ContactsComponent } from './navbar/contacts/contacts.component';
 import { SearchComponent } from './navbar/search/search.component';
 import { LoginComponent } from './navbar/login/login.component';
-import { RegisterComponent } from './navbar/register/register.component';
+import { RegisterComponent } from './register/register.component';
 import { BookHotelComponent } from './navbar/book-hotel/book-hotel.component';
 import { FooterComponent } from './footer/footer.component';
 import { BookingFormComponent } from './booking-form/booking-form.component';
+import { ReviewsComponent } from './reviews/reviews.component';
+import { RatingsComponent } from './ratings/ratings.component';
+import { BookingListComponent } from './navbar/booking-list/booking-list.component';
+import { CarouselComponent } from './carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,11 @@ import { BookingFormComponent } from './booking-form/booking-form.component';
     RegisterComponent,
     BookHotelComponent,
     FooterComponent,
-    BookingFormComponent
+    BookingFormComponent,
+    ReviewsComponent,
+    RatingsComponent,
+    BookingListComponent,
+    CarouselComponent
     
   ],
   imports: [

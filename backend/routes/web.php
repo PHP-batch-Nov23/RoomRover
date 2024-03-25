@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HotelController;
+use App\Http\Controllers\BookingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,22 +25,14 @@ Route::get('/', function () {
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-// Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-// Route::get('/index', [AuthController::class, 'index'])->name('index');
-// Route::get('/admin/user',[AuthController::class,'userlist'])->name('userlist');
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware('auth'); // Apply authentication middleware to restrict access to authenticated users only
+
 
 Route::middleware('auth')->group(function () {
-    Route::get('/index', [AuthController::class, 'index'])->name('index');
-    Route::get('/index', [AuthController::class, 'showPendingRequests'])->name('index');
-    // Route::get('/admin/pending-requests',[AuthController::class, 'showPendingRequests'])->name('admin.pending-requests');
-    Route::post('/admin/accept-request/{user}',[AuthController::class, 'acceptRequest'])->name('admin.accept-request');
+    Route::get('/dashboard', [AuthController::class, 'index'])->name('dashboard');
+    Route::post('/admin/accept-request/{user}', [AuthController::class, 'acceptRequest'])->name('admin.accept-request');
     Route::post('/admin/reject-request/{user}', [AuthController::class, 'rejectRequest'])->name('admin.reject-request');
-
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
     // User Component
     Route::get('/admin/user', [UserController::class, 'userlist'])->name('userlist');
@@ -48,10 +41,15 @@ Route::middleware('auth')->group(function () {
     Route::put('/user/{id}/disable', [UserController::class, 'disable'])->name('user.disable');
 
     // Hotel Component
-    Route::get('/admin/hotelview', [HotelController::class, 'hotellist'])->name('hotellist');
-    Route::get('/addhotel', [HotelController::class, 'create'])->name('addhotel');
+    Route::get('/admin/hotels', [HotelController::class, 'hotellist'])->name('hotellist');
+    Route::get('/newhotel', [HotelController::class, 'create'])->name('newhotel');
     Route::post('/hotel/store', [HotelController::class, 'store'])->name('hotel.store');
     Route::get('/hotel/{id}/edit', [HotelController::class, 'updateview'])->name('hotel.update');
     Route::put('/hotel/{id}', [HotelController::class, 'update'])->name('hotel_update');
-    Route::delete('/hotel/{id}', [HotelController::class, 'destroy'])->name('hotel.destroy'); // Corrected route
+    Route::delete('/hotel/{id}', [HotelController::class, 'destroy'])->name('hotel.destroy'); 
+
+    //Booking Component 
+    Route::get('/admin/bookingsnew', [BookingController::class, 'showbookings'])->name('bookingsnew');
+    Route::delete('/bookings/{id}', [BookingController::class, 'destroy'])->name('booking.destroy');
+    Route::get('bookings', [BookingController::class, 'search'])->name('bookings.search');
 });

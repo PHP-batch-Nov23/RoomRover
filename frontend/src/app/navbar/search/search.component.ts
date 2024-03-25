@@ -25,6 +25,9 @@ export class SearchComponent implements OnInit {
       // Generate random ratings for each hotel
       this.hotels.forEach(hotel => {
         hotel.rating = this.generateRandomRating();
+        this.servicesService.getNumberOfRoomsAvailable(hotel.id).subscribe(rooms => {
+          hotel.availableRooms = rooms; // Assign number of rooms available to the hotel object
+        });
       });
     });
   }
@@ -38,9 +41,11 @@ export class SearchComponent implements OnInit {
     this.filteredHotels = this.hotels.filter(hotel =>
       hotel.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
       hotel.city.toLowerCase().includes(this.searchText.toLowerCase()) ||
-      hotel.area.toLowerCase().includes(this.searchText.toLowerCase())
+      hotel.address.toLowerCase().includes(this.searchText.toLowerCase())
     );
   }
+
+   
 
     // Method to generate a random rating between 3.0 and 5.0
     generateRandomRating(): number {

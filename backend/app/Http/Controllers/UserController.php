@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Database\Eloquent\SoftDeletes; 
 use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     public function userlist(){
-        $agents = User::where('role', 'agent')->get();
-            return view('admin.user', compact('agents'));
+        $agents = User::where('role', 'agent')->paginate(9);
+            return view('admin.agent', compact('agents'));
         }
         public function destroy($id)
         {

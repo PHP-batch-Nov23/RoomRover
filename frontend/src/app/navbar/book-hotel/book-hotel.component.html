@@ -1,27 +1,43 @@
-
+<app-navbar></app-navbar>
 <br>
 <br>
 
+<!-- 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7X0QNtEVS7I3lVqaQBSs2uRMlgHcZknBIFco9Sj2IZyTAP3Hd9p92mGPFhKROD6md5yA&usqp=CAU' -->
 
-<div class="card-container">
-  <div class="hotel-card" *ngFor="let hotel of hotels">
-    <img [src]="hotel.image" alt="Hotel Image">
-    <div class="card-details">
-      <h3>{{ hotel.name }}</h3>
-      <p>City: {{ hotel.city }}</p>
-      <p>Area: {{ hotel.area }}</p>
-      <div class="ratings">
-        <span class="rating">{{ hotel.rating }}</span>
-        <span class="stars">
-          <ng-container *ngFor="let star of getStarArray(hotel.rating)">
-            <i class="fas fa-star"></i>
-          </ng-container>
-        </span>
-      </div>
-      <a [routerLink]="['/booking-form', hotel.id]" class="button-link">Book Now</a>
-<!-- Updated to use routerLink -->
-      <p class="price">{{ hotel.price }}</p>
-      
+  
+
+<section id="gallery">
+  <div class="video-container">
+    
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 mb-4" *ngFor="let hotel of hotels">
+        <div class="card">
+          <img [src]="'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7X0QNtEVS7I3lVqaQBSs2uRMlgHcZknBIFco9Sj2IZyTAP3Hd9p92mGPFhKROD6md5yA&usqp=CAU'" alt="" class="card-img-top" style="height: 250px;">
+          <div class="card-body">
+            <h5 class="card-title">{{ hotel.name }}</h5>
+            <p class="card-text">City: {{ hotel.city }}</p>
+            <p class="card-text">Area: {{ hotel.address }}</p>
+            <p class="card-text">Available Rooms: {{ hotel.rooms }}</p>
+            <div class="ratings">
+              <span class="rating">{{ hotel.rating }}</span>
+              <span class="stars">
+                <ng-container *ngFor="let star of getStarArray(hotel.rating)">
+                  <span class="bi bi-star-fill text-warning"></span>
+                </ng-container>
+              </span>
+            </div>
+            <p class="card-text">Price: {{ hotel.price }}$ Per Night</p>
+          </div>
+          <div class="card-footer">
+            <a [href]="'/booking-form/' + hotel.id" class="btn">Book Now</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+</section>
+
+<app-footer></app-footer>
+

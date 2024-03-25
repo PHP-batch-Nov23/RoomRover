@@ -1,7 +1,19 @@
 export interface User {
-    id: string;
-    fullName: string;
+    full_name: string;
     email: string;
     password: string;
-    hasPanCard?: boolean;
+    contact: string;
 }
+
+export interface Booking {
+    id: number;
+    name: string;
+    email: string;
+    contactNumber: string;
+    arrivalDate: string;
+    departureDate: string;
+    numberOfPeople: number;
+    numberOfRooms: number;
+    deleted: boolean;
+    hotelName: string;
+  }

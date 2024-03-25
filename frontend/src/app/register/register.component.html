@@ -1,0 +1,52 @@
+<!-- HTML -->
+<app-navbar></app-navbar>
+<img class="bg-img" src="../../../assets/images/form.jpg" alt="">
+<form [formGroup]="registerForm" (ngSubmit)="submitDetails($event)" class="register-form">
+  <div class="form-container">
+    <div class="field">
+      <img src="../../assets/images/giphy.webp" alt="Profile Image">
+      <label for="full_name">FullName</label>
+      <input type="text" pInputText formControlName="full_name" class="w-full" name="full_name"
+        placeholder="Enter your FullName" />
+      <small *ngIf="full_name.invalid && (full_name.dirty || full_name.touched)" class="block p-error">
+        <div *ngIf="full_name.errors?.['required']">Name is required.</div>
+        <!-- <div *ngIf="full_name.errors?.['pattern']">Enter a valid Name</div> -->
+      </small>
+      <label for="email">Email</label>
+      <input type="email" pInputText formControlName="email" class="w-full" name="email" placeholder="Enter your Email" />
+      <small *ngIf="email.invalid && (email.dirty || email.touched)" class="block p-error">
+        <div *ngIf="email.errors?.['required']">Email is required.</div>
+        <div *ngIf="email.errors?.['pattern']">Enter a valid Email</div>
+      </small>
+      <label for="password">Password</label>
+      <input type="password" pInputText formControlName="password" class="w-full" name="password"
+        placeholder="Enter your Password" />
+      <small *ngIf="password.invalid && (password.dirty || password.touched)" class="block p-error">
+        <div *ngIf="password.errors?.['required']">Password is required.</div>
+        <div *ngIf="password.errors?.['pattern']">Enter a valid password</div>
+      </small>
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" pInputText formControlName="confirmPassword" class="w-full" name="confirmPassword"/>
+      <small *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)"
+        class="block p-error">
+        <div *ngIf="confirmPassword.errors?.['required']">Confirm Password is required.</div>
+        <div *ngIf="confirmPassword.errors?.['pattern']">Enter a valid Confirm Password</div>
+      </small>
+
+      <label for="contact">Contact</label>
+      <input type="text" pInputText formControlName="contact" class="w-full" name="contact"  />
+
+      <label for="hasPanCard">Do you have a PAN Card?</label>
+      <select formControlName="hasPanCard" class="w-full" name="hasPanCard">
+        <option value="">Select</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+    </div>
+    <!-- Add other fields here -->
+
+    <button type="submit" class="custom-button register-button" >REGISTER</button>
+  </div>
+</form>
+
+<app-footer></app-footer>

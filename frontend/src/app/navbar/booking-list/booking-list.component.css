@@ -1,0 +1,113 @@
+/* .table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .table th, .table td {
+    border: 1px solid #5756e6;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .table th {
+    background-color: #f7bf88;
+    color: black;
+  }
+  
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f7bf88;
+  }
+  
+  .table-striped tbody tr:nth-of-type(even) {
+    background-color: #fff;
+  }
+  
+  .btn {
+    background-color: #dc3545;
+    color: black;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px; 
+    cursor: pointer;
+  } */
+  
+  /* .btn:hover {
+    background-color: #f7bf88;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .btn-danger:hover {
+    background-color:#f7bf88;
+  } */
+  
+
+
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Add gap between sections */
+    margin-top: 20px;
+    background-image: linear-gradient(to left, #fdc883, #99c8f3);
+  }
+  
+  .booking-section {
+    border: 2px solid #ccc; /* Add border around each section */
+    border-radius: 10px; /* Add border radius for rounded corners */
+    padding: 20px; /* Add padding inside each section */
+  }
+  
+  .booking-section h2 {
+    margin-bottom: 10px; /* Add margin below the heading */
+color: rgb(243, 142, 47);
+  }
+  
+  .booking-section table {
+    width: 100%; /* Make the table width 100% */
+  }
+  
+  .booking-section table th,
+  .booking-section table td {
+    padding: 8px; /* Add padding to table cells */
+    text-align: left; /* Align text to the left */
+  }
+  
+
+
+
+  .dropdown-container {
+    display: flex;
+    justify-content: center; /* Center the dropdown horizontally */
+    margin-top: 50px; /* Adjust the top margin as needed */
+  }
+  
+  .custom-dropdown {
+    padding: 10px; /* Add padding for better appearance */
+    font-size: 16px; /* Adjust font size as needed */
+    border: 1px solid #ccc; /* Add border for clarity */
+    border-radius: 5px; /* Add border radius for rounded corners */
+    background-color: #f9f9f9; /* Set background color */
+    cursor: pointer; /* Change cursor on hover */
+  }
+  
+  .custom-dropdown:hover {
+    background-color: #e5e5e5; /* Change background color on hover */
+  }
+  
+
+  .app-footer {
+    position: fixed; /* Position the footer */
+  left: 0; /* Align to the left edge */
+  bottom: 0; /* Align to the bottom of the viewport */
+  width: 100%; /* Take the full width of the viewport */
+  background: #000; /* Background color */
+  padding: 30px 0px; /* Padding */
+  font-family: 'Play', sans-serif;
+  text-align: center;
+  z-index: 999; /* Set z-index to ensure it appears above other content */
+}
+  
