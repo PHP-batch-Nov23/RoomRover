@@ -30,10 +30,11 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [AuthController::class, 'index'])->name('dashboard');
+    //agent approved
     Route::post('/admin/accept-request/{user}', [AuthController::class, 'acceptRequest'])->name('admin.accept-request');
     Route::post('/admin/reject-request/{user}', [AuthController::class, 'rejectRequest'])->name('admin.reject-request');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
+   
     // User Component
     Route::get('/admin/user', [UserController::class, 'userlist'])->name('userlist');
     Route::delete('/user/{id}', [UserController::class, 'destroy'])->name('user.destroy');
