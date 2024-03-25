@@ -33,8 +33,6 @@ Route::controller(HotelBookingController::class)->group(function(){
 });
 
 
-
-
 //get and post hotels for search
 Route::get('hotels', [GetHotelController::class, 'showHotel']);
 Route::post('hotels', [GetHotelController::class, 'saveHotel']);
