@@ -18,7 +18,7 @@ class UserController extends Controller
             $user->delete();
             return redirect()->back()->with('status', 'Agent deleted successfully.');
         }
-    
+    //Enable Agent
         public function enable($id)
         {
             $user = User::findOrFail($id);
@@ -27,7 +27,7 @@ class UserController extends Controller
             
             return redirect()->back()->with('status', 'Agent enabled successfully');
         }
-    
+     //Disable Agent
         public function disable($id)
         {
             $user = User::findOrFail($id);
