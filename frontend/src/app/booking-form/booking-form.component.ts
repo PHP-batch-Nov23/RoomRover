@@ -36,6 +36,8 @@ export class BookingFormComponent implements OnInit {
 
   }
 
+
+  
   // submitForm() {
   //   if (this.bookingForm.valid) {
   //     this.bookingService.writeData(this.bookingForm.value).subscribe(
