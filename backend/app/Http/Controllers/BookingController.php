@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class BookingController extends Controller
 {
+   //Bookings Crud Operations
     public function showbookings(){
         $bookings = Booking::all();
         return view('admin.bookingsnew', compact('bookings'));
