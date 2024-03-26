@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
-
 use Illuminate\Http\Request;
 
 class RegisterAgentController extends Controller
