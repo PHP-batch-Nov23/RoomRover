@@ -12,7 +12,7 @@ class BookingController extends Controller
         $bookings = Booking::all();
         return view('admin.bookingsnew', compact('bookings'));
     }
-
+//cancel booking
     public function destroy($id){
         $booking = Booking::findOrFail($id);
         $booking->delete();
