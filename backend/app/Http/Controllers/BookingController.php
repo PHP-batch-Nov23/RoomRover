@@ -18,6 +18,8 @@ class BookingController extends Controller
         $booking->delete();
         return redirect()->back()->with('status', 'Booking canceled successfully.');
     }
+
+    //search functionality
     public function search(Request $request)
     {
         $search = $request->input('search');
