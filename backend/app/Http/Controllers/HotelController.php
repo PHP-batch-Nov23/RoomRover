@@ -13,7 +13,7 @@ class HotelController extends Controller
         $hotels = Hotel::orderBy('id','desc')->paginate(8);
         return view('admin.hotels', compact('hotels'));
     }
-
+//create hotel
     public function create()
     {
         return view('admin.newhotel');
